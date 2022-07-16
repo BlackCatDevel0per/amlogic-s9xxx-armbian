@@ -33,7 +33,7 @@ inputs:
     required: false
     default: "2748"
   armbian_fstype:
-    description: "Set armbian rootfs type: ext4 / btrfs"
+    description: "Set armbian rootfs type: ext4 / f2fs / btrfs"
     required: false
     default: "ext4"
   armbian_sign:
