@@ -12,7 +12,7 @@ on:
       set_release:
         description: "Select OS Release."
         required: false
-        default: "jammy"
+        default: "bullseye"
         type: choice
         options:
           - jammy
@@ -20,7 +20,7 @@ on:
       armbian_soc:
         description: "Select Amlogic SoC."
         required: false
-        default: "all"
+        default: "s905x3"
         type: choice
         options:
           - all
@@ -43,7 +43,7 @@ on:
       armbian_kernel:
         description: "Select kernel version."
         required: false
-        default: "5.10.125_5.15.50"
+        default: "5.4.200"
         type: choice
         options:
           - 5.4.200_5.10.125
@@ -69,11 +69,12 @@ on:
         type: choice
         options:
           - ext4
+          - f2fs
           - btrfs
       armbian_sign:
         description: "Set armbian custom name."
         required: false
-        default: ""
+        default: "Kitybian"
   #schedule:
   #- cron: "0 17 * * 0"
 
@@ -122,7 +123,7 @@ jobs:
           echo "::set-output name=status::success"
 
       - name: Rebuild Armbian for Amlogic s9xxx
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: BlackCatDevel0per/amlogic-s9xxx-armbian@main
         if: steps.compile.outputs.status == 'success' && !cancelled()
         with:
           build_target: armbian
